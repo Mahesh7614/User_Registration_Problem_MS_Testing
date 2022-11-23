@@ -21,6 +21,10 @@
             string mobileNumber = Console.ReadLine();
             Console.WriteLine(user.MobileNumber(mobileNumber));
 
+            Console.WriteLine("Enter Password min 8 Characters : ");
+            string password = Console.ReadLine();
+            Console.WriteLine(user.PassWord(password));
+
         }
     }
 }

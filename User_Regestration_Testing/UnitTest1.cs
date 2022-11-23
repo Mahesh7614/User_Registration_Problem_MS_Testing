@@ -36,6 +36,14 @@ namespace User_Regestration_Testing
 
             Assert.IsTrue(result);
         }
+        [TestMethod]
+        public void TestPasswordMin8Chrarcters()
+        {
+            User_Registration user = new User_Registration();
+            bool result = user.PassWord("Mahes1245");
+
+            Assert.IsTrue(result);
+        }
 
     }
 }
