@@ -28,6 +28,14 @@ namespace User_Regestration_Testing
 
             Assert.IsTrue(result);
         }
+        [TestMethod]
+        public void TestMobilNumber()
+        {
+            User_Registration user = new User_Registration();
+            bool result = user.MobileNumber("+91 9028876143");
+
+            Assert.IsTrue(result);
+        }
 
     }
 }

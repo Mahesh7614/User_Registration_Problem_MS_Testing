@@ -19,5 +19,12 @@ namespace User_Registration_Problem_MS_Testing
             bool matches = emailID.IsMatch(email);
             return matches;
         }
+        public bool MobileNumber(string mobileNumber)
+        {
+
+            Regex number = new Regex(@"^*[+][1-9]{1,3}\s[1-9]{1}[0-9]{9}$");
+            bool matches = number.IsMatch(mobileNumber);
+            return matches;
+        }
     }
 }

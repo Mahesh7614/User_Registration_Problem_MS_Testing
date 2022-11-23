@@ -17,6 +17,10 @@
             string email = Console.ReadLine();
             Console.WriteLine(user.Email(email));
 
+            Console.Write("Enter Mobile Number with Country Code and Space between them : ");
+            string mobileNumber = Console.ReadLine();
+            Console.WriteLine(user.MobileNumber(mobileNumber));
+
         }
     }
 }
