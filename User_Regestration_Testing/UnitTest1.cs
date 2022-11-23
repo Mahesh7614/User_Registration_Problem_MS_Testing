@@ -68,6 +68,14 @@ namespace User_Regestration_Testing
 
             Assert.IsTrue(result);
         }
+        [TestMethod]
+        public void TestSampleEmails()
+        {
+            User_Registration user = new User_Registration();
+            bool result = user.SampleEmail("abc.100@abc.com.au");
+
+            Assert.IsTrue(result);
+        }
 
     }
 }
