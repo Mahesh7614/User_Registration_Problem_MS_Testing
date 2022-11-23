@@ -16,7 +16,15 @@ namespace User_Regestration_Testing
         public void TestLastName()
         {
             User_Registration user = new User_Registration();
-            bool result = user.FirstNameAndLastName("Mahesh");
+            bool result = user.FirstNameAndLastName("Waghmare");
+
+            Assert.IsTrue(result);
+        }
+        [TestMethod]
+        public void TestEmail()
+        {
+            User_Registration user = new User_Registration();
+            bool result = user.Email("abc.Mahesh@bl.co.net");
 
             Assert.IsTrue(result);
         }

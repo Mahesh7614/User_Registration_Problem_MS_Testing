@@ -12,6 +12,11 @@
             Console.Write("Enter Last Name : ");
             string LastName = Console.ReadLine();
             Console.WriteLine(user.FirstNameAndLastName(LastName));
+
+            Console.Write("Enter Email ID : ");
+            string email = Console.ReadLine();
+            Console.WriteLine(user.Email(email));
+
         }
     }
 }
