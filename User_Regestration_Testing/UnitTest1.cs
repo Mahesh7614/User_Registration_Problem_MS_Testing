@@ -60,6 +60,14 @@ namespace User_Regestration_Testing
 
             Assert.IsTrue(result);
         }
+        [TestMethod]
+        public void TestPasswordMinSpecialCharacter()
+        {
+            User_Registration user = new User_Registration();
+            bool result = user.PassWord("maheshS@123");
+
+            Assert.IsTrue(result);
+        }
 
     }
 }
