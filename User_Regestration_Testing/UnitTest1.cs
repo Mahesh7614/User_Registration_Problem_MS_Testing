@@ -52,6 +52,14 @@ namespace User_Regestration_Testing
 
             Assert.IsTrue(result);
         }
+        [TestMethod]
+        public void TestPasswordMin1Digit()
+        {
+            User_Registration user = new User_Registration();
+            bool result = user.PassWord("maheshS123");
+
+            Assert.IsTrue(result);
+        }
 
     }
 }

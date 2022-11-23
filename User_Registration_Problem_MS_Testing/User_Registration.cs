@@ -29,7 +29,7 @@ namespace User_Registration_Problem_MS_Testing
         public bool PassWord(string password)
         {
 
-            Regex pass = new Regex(@"^(?=.*[a-z])(?=.*[A-Z]).{8,}$");
+            Regex pass = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$");
             bool matches = pass.IsMatch(password);
             return matches;
         }
