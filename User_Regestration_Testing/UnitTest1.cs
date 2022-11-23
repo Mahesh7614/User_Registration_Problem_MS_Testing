@@ -44,6 +44,14 @@ namespace User_Regestration_Testing
 
             Assert.IsTrue(result);
         }
+        [TestMethod]
+        public void TestPasswordMin1UpperCase()
+        {
+            User_Registration user = new User_Registration();
+            bool result = user.PassWord("maheshSw");
+
+            Assert.IsTrue(result);
+        }
 
     }
 }
