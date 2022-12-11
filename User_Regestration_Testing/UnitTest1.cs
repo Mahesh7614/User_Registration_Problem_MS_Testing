@@ -1,3 +1,4 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using User_Registration_Problem_MS_Testing;
 namespace User_Regestration_Testing
 {
@@ -5,68 +6,85 @@ namespace User_Regestration_Testing
     public class UnitTest1
     {
         [TestMethod]
-        public void TestFirstName()
+        [DataRow("Mah", true)]
+        [DataRow("Ma", false)]
+        [DataRow("Mahesh", true)]
+        [DataRow("Mahi12", false)]
+        public void TestFirstName(string firstName, bool expected)
         {
             User_Registration user = new User_Registration();
-            bool result = user.FirstNameAndLastName("Mahesh");
+            bool actual = user.FirstNameAndLastName(firstName);
 
-            Assert.IsTrue(result);
+            Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void TestLastName()
+        [DataRow("Wagh", true)]
+        [DataRow("Wa", false)]
+        [DataRow("Waghmare", true)]
+        [DataRow("Wagh12", false)]
+        public void TestLastName(string lastName, bool expected)
         {
             User_Registration user = new User_Registration();
-            bool result = user.FirstNameAndLastName("Waghmare");
+            bool actual = user.FirstNameAndLastName(lastName);
 
-            Assert.IsTrue(result);
+            Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void TestEmail()
+        [DataRow("abc.Mahesh@bl.co.net", true)]
+        [DataRow("abcMahesh@bl.co.net", true)]
+        [DataRow("abc_Mahesh@bl.co.net", true)]
+        [DataRow("abc+Mahesh@bl.co.net", true)]
+        [DataRow("abc-Mahesh@bl.co.net", true)]
+        [DataRow("abc12Mahesh@bl.co.net", true)]
+        [DataRow("ab12Mahesh@bl.co.net", false)]
+        [DataRow("abc12Mahesh@bl.co.in", false)]
+        [DataRow("abc12Mahesh@blc.co.net", false)]
+        [DataRow("abc12Mahesh@bl.com.net", false)]
+        [DataRow("abc12Maheshbl.co.net", false)]
+        public void TestEmail(string email, bool expected)
         {
             User_Registration user = new User_Registration();
-            bool result = user.Email("abc.Mahesh@bl.co.net");
+            bool actual = user.Email(email);
 
-            Assert.IsTrue(result);
+            Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void TestMobilNumber()
+        [DataRow("+1 1000987267", true)]
+        [DataRow("+91 9842905050", true)]
+        [DataRow("+111 9842905050", true)]
+        [DataRow("+919842905050", false)]
+        [DataRow("+919842905", false)]
+        [DataRow("+91 984290", false)]
+        [DataRow("+91 984290505000000", false)]
+        [DataRow("91 9842905050", false)]
+        public void TestMobilNumber(string mobileNumber, bool expected)
         {
             User_Registration user = new User_Registration();
-            bool result = user.MobileNumber("+91 9028876143");
+            bool actual = user.MobileNumber(mobileNumber);
 
-            Assert.IsTrue(result);
+            Assert.AreEqual(expected,actual);
         }
         [TestMethod]
-        public void TestPasswordMin8Chrarcters()
+        [DataRow("Mahesh@123", true)]
+        [DataRow("maHe#sh123", true)]
+        [DataRow("mahe@sh1S", true)]
+        [DataRow("@Mahesh129", true)]
+        [DataRow("Ma-hesh123", true)]
+        [DataRow("mahesh123)@1234", false)]
+        [DataRow("Mahe@shw", false)]
+        [DataRow("mah123", false)]
+        [DataRow("mah@123", false)]
+        [DataRow("@Mah#12esh", true)]
+        [DataRow(")Mahe12", false)]
+        [DataRow(")maHe12", false)]
+        [DataRow("mah-esh@12S", true)]
+        [DataRow("maheShw@s", false)]
+        public void TestPassword(string password, bool expected)
         {
             User_Registration user = new User_Registration();
-            bool result = user.PassWord("Mahes1245");
+            bool actual = user.PassWord(password);
 
-            Assert.IsTrue(result);
-        }
-        [TestMethod]
-        public void TestPasswordMin1UpperCase()
-        {
-            User_Registration user = new User_Registration();
-            bool result = user.PassWord("maheshSw");
-
-            Assert.IsTrue(result);
-        }
-        [TestMethod]
-        public void TestPasswordMin1Digit()
-        {
-            User_Registration user = new User_Registration();
-            bool result = user.PassWord("maheshS123");
-
-            Assert.IsTrue(result);
-        }
-        [TestMethod]
-        public void TestPasswordMinSpecialCharacter()
-        {
-            User_Registration user = new User_Registration();
-            bool result = user.PassWord("maheshS@123");
-
-            Assert.IsTrue(result);
+            Assert.AreEqual(expected,actual);
         }
         [TestMethod]
         public void TestSampleEmails()
