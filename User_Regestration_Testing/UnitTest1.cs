@@ -1,3 +1,4 @@
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using User_Registration_Problem_MS_Testing;
 namespace User_Regestration_Testing
@@ -6,114 +7,125 @@ namespace User_Regestration_Testing
     public class UnitTest1
     {
         [TestMethod]
-        [DataRow("Mah", true)]
-        [DataRow("Ma", false)]
-        [DataRow("Mahesh", true)]
-        [DataRow("Mahi12", false)]
-        public void TestFirstName(string firstName, bool expected)
+        [DataRow(null, "Name Should Not be Null")]
+        [DataRow("", "Name Should Not be Empty")]
+        [DataRow("Mah", "True")]
+        [DataRow("Ma", "Please enter a Valid Name!")]
+        [DataRow("Mahesh", "True")]
+        [DataRow("Mahi12", "Please enter a Valid Name!")]
+        public void TestFirstName(string firstName, string expected)
         {
             User_Registration user = new User_Registration();
-            bool actual = user.FirstNameAndLastName(firstName);
+            string actual = user.FirstNameAndLastName(firstName);
 
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        [DataRow("Wagh", true)]
-        [DataRow("Wa", false)]
-        [DataRow("Waghmare", true)]
-        [DataRow("Wagh12", false)]
-        public void TestLastName(string lastName, bool expected)
+        [DataRow(null, "Name Should Not be Null")]
+        [DataRow("", "Name Should Not be Empty")]
+        [DataRow("Wagh", "True")]
+        [DataRow("Wa", "Please enter a Valid Name!")]
+        [DataRow("Waghmare", "True")]
+        [DataRow("Wagh12", "Please enter a Valid Name!")]
+        public void TestLastName(string lastName, string expected)
         {
             User_Registration user = new User_Registration();
-            bool actual = user.FirstNameAndLastName(lastName);
+            string actual = user.FirstNameAndLastName(lastName);
 
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        [DataRow("abc.Mahesh@bl.co.net", true)]
-        [DataRow("abcMahesh@bl.co.net", true)]
-        [DataRow("abc_Mahesh@bl.co.net", true)]
-        [DataRow("abc+Mahesh@bl.co.net", true)]
-        [DataRow("abc-Mahesh@bl.co.net", true)]
-        [DataRow("abc12Mahesh@bl.co.net", true)]
-        [DataRow("ab12Mahesh@bl.co.net", false)]
-        [DataRow("abc12Mahesh@bl.co.in", false)]
-        [DataRow("abc12Mahesh@blc.co.net", false)]
-        [DataRow("abc12Mahesh@bl.com.net", false)]
-        [DataRow("abc12Maheshbl.co.net", false)]
-        public void TestEmail(string email, bool expected)
+        [DataRow(null, "Email Should Not be Null")]
+        [DataRow("", "Email Should Not be Empty")]
+        [DataRow("abc.Mahesh@bl.co.net", "True")]
+        [DataRow("abcMahesh@bl.co.net", "True")]
+        [DataRow("abc_Mahesh@bl.co.net", "True")]
+        [DataRow("abc+Mahesh@bl.co.net", "True")]
+        [DataRow("abc-Mahesh@bl.co.net", "True")]
+        [DataRow("abc12Mahesh@bl.co.net", "True")]
+        [DataRow("ab12Mahesh@bl.co.net", "Please enter a Valid Email!")]
+        [DataRow("abc12Mahesh@bl.co.in", "Please enter a Valid Email!")]
+        [DataRow("abc12Mahesh@blc.co.net", "Please enter a Valid Email!")]
+        [DataRow("abc12Mahesh@bl.com.net", "Please enter a Valid Email!")]
+        [DataRow("abc12Maheshbl.co.net", "Please enter a Valid Email!")]
+        public void TestEmail(string email, string expected)
         {
             User_Registration user = new User_Registration();
-            bool actual = user.Email(email);
+            string actual = user.Email(email);
 
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        [DataRow("+1 1000987267", true)]
-        [DataRow("+91 9842905050", true)]
-        [DataRow("+111 9842905050", true)]
-        [DataRow("+919842905050", false)]
-        [DataRow("+919842905", false)]
-        [DataRow("+91 984290", false)]
-        [DataRow("+91 984290505000000", false)]
-        [DataRow("91 9842905050", false)]
-        public void TestMobilNumber(string mobileNumber, bool expected)
+        [DataRow(null, "Mobile Number Should Not be Null")]
+        [DataRow("", "Mobile Number Should Not be Empty")]
+        [DataRow("+1 1000987267", "True")]
+        [DataRow("+91 9842905050", "True")]
+        [DataRow("+111 9842905050", "True")]
+        [DataRow("+919842905050", "Please enter a Valid Mobile Number!")]
+        [DataRow("+919842905", "Please enter a Valid Mobile Number!")]
+        [DataRow("+91 984290", "Please enter a Valid Mobile Number!")]
+        [DataRow("+91 984290505000000", "Please enter a Valid Mobile Number!")]
+        [DataRow("91 9842905050", "Please enter a Valid Mobile Number!")]
+        public void TestMobilNumber(string mobileNumber, string expected)
         {
             User_Registration user = new User_Registration();
-            bool actual = user.MobileNumber(mobileNumber);
+            string actual = user.MobileNumber(mobileNumber);
 
             Assert.AreEqual(expected,actual);
         }
         [TestMethod]
-        [DataRow("Mahesh@123", true)]
-        [DataRow("maHe#sh123", true)]
-        [DataRow("mahe@sh1S", true)]
-        [DataRow("@Mahesh129", true)]
-        [DataRow("Ma-hesh123", true)]
-        [DataRow("mahesh123)@1234", false)]
-        [DataRow("Mahe@shw", false)]
-        [DataRow("mah123", false)]
-        [DataRow("mah@123", false)]
-        [DataRow("@Mah#12esh", true)]
-        [DataRow(")Mahe12", false)]
-        [DataRow(")maHe12", false)]
-        [DataRow("mah-esh@12S", true)]
-        [DataRow("maheShw@s", false)]
-        public void TestPassword(string password, bool expected)
+        [DataRow(null, "Password Should Not be Null")]
+        [DataRow("", "Password Should Not be Empty")]
+        [DataRow("Mahesh@123", "True")]
+        [DataRow("maHe#sh123", "True")]
+        [DataRow("mahe@sh1S", "True")]
+        [DataRow("@Mahesh129", "True")]
+        [DataRow("Ma-hesh123", "True")]
+        [DataRow("mahesh123)@1234", "Please enter a Valid Password!")]
+        [DataRow("Mahe@shw", "Please enter a Valid Password!")]
+        [DataRow("mah123", "Please enter a Valid Password!")]
+        [DataRow("mah@123", "Please enter a Valid Password!")]
+        [DataRow("@Mah#12esh", "True")]
+        [DataRow(")Mahe12", "Please enter a Valid Password!")]
+        [DataRow(")maHe12", "Please enter a Valid Password!")]
+        [DataRow("mah-esh@12S", "True")]
+        [DataRow("maheShw@s", "Please enter a Valid Password!")]
+        public void TestPassword(string password, string expected)
         {
             User_Registration user = new User_Registration();
-            bool actual = user.PassWord(password);
+            string actual = user.PassWord(password);
 
             Assert.AreEqual(expected,actual);
         }
         [TestMethod]
-        [DataRow("abc@yahoo.com,", true)]
-        [DataRow("abc-100@yahoo.com,", true)]
-        [DataRow("abc.100@yahoo.com", true)]
-        [DataRow("abc111@abc.com,", true)]
-        [DataRow("abc-100@abc.net,", true)]
-        [DataRow("abc.100@abc.com.au", true)]
-        [DataRow("abc@1.com,", true)]
-        [DataRow("abc@gmail.com.com", true)]
-        [DataRow("abc+100@gmail.com", true)]
-        [DataRow("abc", false)]
-        [DataRow("abc@.com.my", false)]
-        [DataRow("abc123@gmail.a", false)]
-        [DataRow("abc123@.com", false)]
-        [DataRow("abc123@.com.com", false)]
-        [DataRow(".abc@abc.com", false)]
-        [DataRow("abc()*@gmail.com", false)]
-        [DataRow("abc..2002@gmail.com", false)]
-        [DataRow("abc.@gmail.com", false)]
-        [DataRow("abc@abc@gmail.com", false)]
-        [DataRow("abc@gmail.com.1a", false)]
-        [DataRow("abc@gmail.com.aa.au", false)]
-        [DataRow("abc@%*.com", false)]
-
-        public void TestSampleEmails(string email, bool expected)
+        [DataRow(null, "EmailID Should Not be Null")]
+        [DataRow("", "EmailID Should Not be Empty")]
+        [DataRow("abc@yahoo.com,", "True")]
+        [DataRow("abc-100@yahoo.com,", "True")]
+        [DataRow("abc.100@yahoo.com", "True")]
+        [DataRow("abc111@abc.com,", "True")]
+        [DataRow("abc-100@abc.net,", "True")]
+        [DataRow("abc.100@abc.com.au", "True")]
+        [DataRow("abc@1.com,", "True")]
+        [DataRow("abc@gmail.com.com", "True")]
+        [DataRow("abc+100@gmail.com", "True")]
+        [DataRow("abc", "Please enter a Valid EmailID!")]
+        [DataRow("abc@.com.my", "Please enter a Valid EmailID!")]
+        [DataRow("abc123@gmail.a", "Please enter a Valid EmailID!")]
+        [DataRow("abc123@.com", "Please enter a Valid EmailID!")]
+        [DataRow("abc123@.com.com", "Please enter a Valid EmailID!")]
+        [DataRow(".abc@abc.com", "Please enter a Valid EmailID!")]
+        [DataRow("abc()*@gmail.com", "Please enter a Valid EmailID!")]
+        [DataRow("abc..2002@gmail.com", "Please enter a Valid EmailID!")]
+        [DataRow("abc.@gmail.com", "Please enter a Valid EmailID!")]
+        [DataRow("abc@abc@gmail.com", "Please enter a Valid EmailID!")]
+        [DataRow("abc@gmail.com.1a", "Please enter a Valid EmailID!")]
+        [DataRow("abc@gmail.com.aa.au", "Please enter a Valid EmailID!")]
+        [DataRow("abc@%*.com", "Please enter a Valid EmailID!")]
+        public void TestSampleEmails(string email, string expected)
         {
             User_Registration user = new User_Registration();
-            bool actual = user.SampleEmail(email);
+            string actual = user.SampleEmail(email);
 
             Assert.AreEqual(expected,actual);
         }
